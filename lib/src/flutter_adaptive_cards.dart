@@ -275,8 +275,7 @@ class _AdaptiveCardState extends State<AdaptiveCard> {
   @override
   Widget build(BuildContext context) {
     if (map == null || hostConfig == null) {
-      return widget.placeholder ??
-          Container(child: Center(child: CircularProgressIndicator()));
+      return widget.placeholder ?? SizedBox();
     }
 
     return RawAdaptiveCard.fromMap(
@@ -383,8 +382,9 @@ class RawAdaptiveCardState extends State<RawAdaptiveCard> {
     visitor = (element) {
       if (element is StatefulElement) {
         if (element.state is AdaptiveInputMixin) {
-          if ((element.state as AdaptiveInputMixin).checkRequired()) {
-            (element.state as AdaptiveInputMixin).appendInput(map);
+          var adaptive = (element.state as AdaptiveInputMixin);
+          if (adaptive.checkRequired()) {
+            adaptive.appendInput(map);
           } else {
             valid = false;
           }

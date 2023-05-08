@@ -23,7 +23,7 @@ class _AdaptiveTextInputState extends State<AdaptiveTextInput>
   String? label;
   late bool isRequired;
   late bool isMultiline;
-  late int maxLength;
+  int? maxLength;
   TextInputType? style;
 
   @override
@@ -51,9 +51,11 @@ class _AdaptiveTextInputState extends State<AdaptiveTextInput>
                   TextStyle(backgroundColor: Colors.white, color: Colors.black),
               controller: controller,
               // maxLength: maxLength,
-              inputFormatters: [
-                LengthLimitingTextInputFormatter(maxLength),
-              ],
+              inputFormatters: maxLength != null
+                  ? [
+                      LengthLimitingTextInputFormatter(maxLength),
+                    ]
+                  : null,
               keyboardType: style,
               maxLines: isMultiline ? null : 1,
               decoration: InputDecoration(
