@@ -25,7 +25,7 @@ class _AdaptiveColumnState extends State<AdaptiveColumn>
 
   late MainAxisAlignment verticalAlignment;
   late CrossAxisAlignment horizontalAlignment;
-  late Alignment? containerHorizontalAlignment;
+  Alignment? containerHorizontalAlignment;
 
   GenericAction? action;
 
@@ -123,7 +123,7 @@ class _AdaptiveColumnState extends State<AdaptiveColumn>
   }
 
   Alignment? loadHorizontalContainerAlignment() {
-    String horizontalAlignment =
+    String? horizontalAlignment =
         adaptiveMap["horizontalAlignment"]?.toLowerCase();
 
     switch (horizontalAlignment) {

@@ -23,7 +23,7 @@ class _AdaptiveTextBlockState extends State<AdaptiveTextBlock>
   FontWeight? fontWeight;
   double? fontSize;
   late Alignment horizontalAlignment;
-  late int maxLines;
+  int? maxLines;
   late TextAlign textAlign;
   late String text;
 
@@ -137,7 +137,7 @@ class _AdaptiveTextBlockState extends State<AdaptiveTextBlock>
   }
 
   /// This also takes care of the wrap property, because maxLines = 1 => no wrap
-  int loadMaxLines() {
+  int? loadMaxLines() {
     bool wrap = widget.adaptiveMap["wrap"] ?? false;
     if (!wrap) return 1;
     // can be null, but that's okay for the text widget.
